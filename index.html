@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tlapka & Dršťka – domácí pamlsky pro psy a kočky</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<nav><b>🐾 Mlsná tlapka</b><div><a href="#nabidka">Nabídka</a><a href="#slozeni">Suroviny</a><a href="#jak">Dávkování</a><a href="#objednavka">Objednávka</a><a href="#objednavka" class="cart-btn" id="navCart">🛒 Košík <span id="cartCount">0</span></a></div></nav>
+
+<header class="hero">
+<div>
+<h1>Domácí pamlsky, které si zaslouží vaše tlapky</h1>
+<p>Pečeme malé várky z několika jednoduchých surovin, úplně bez masa. Chuť dodává lososový olej a přírodní aroma. Bez cukru, bez soli, bez konzervantů a bez umělých barviv. Každý pamlsek má na sáčku přesné složení, datum výroby a spotřeby.</p>
+<a class="btn" href="#nabidka">Prohlédnout nabídku</a>
+</div>
+<div class="blob" aria-hidden="true"><span>🐶</span><span>🐱</span></div>
+</header>
+</div>
+
+<section id="nabidka"><div class="wrap">
+<h2>Naše pamlsky</h2>
+<p class="lead">Ceny jsou včetně DPH. Rozklikněte „Složení a údaje“ a uvidíte všechny suroviny, výživové hodnoty i trvanlivost.</p>
+<div class="filters" role="group" aria-label="Filtr podle zvířete">
+<button data-f="all" aria-pressed="true">Vše</button>
+<button data-f="dog" aria-pressed="false">🐶 Pro psy</button>
+<button data-f="cat" aria-pressed="false">🐱 Pro kočky</button>
+</div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="slozeni"><div class="wrap">
+<h2>Co v pamlscích je (a co ne)</h2>
+<p class="lead">Používáme suroviny lidské kvality od českých dodavatelů, kdykoli je to možné.</p>
+<div class="two">
+<div class="box"><h3>✅ Používáme</h3><ul>
+<li>lososový olej a přírodní rybí aroma</li>
+<li>dýni, mrkev, batáty, jablka, borůvky</li>
+<li>pivovarské kvasnice, catnip a kočičí trávu</li>
+<li>ovesnou a rýžovou mouku</li>
+<li>arašídové máslo bez soli, cukru a xylitolu</li>
+<li>vejce, kokosový nebo lososový olej</li>
+</ul></div>
+<div class="box"><h3>🚫 Nikdy nepoužíváme</h3><ul>
+<li>cukr, sůl, med a sladidla (zejména xylitol)</li>
+<li>maso a masné produkty</li>
+<li>cibuli, česnek, hrozny a rozinky, čokoládu</li>
+<li>konzervanty, umělá aromata a barviva</li>
+<li>pšeničnou mouku a sóju</li>
+<li>kosti, které se tříští</li>
+</ul></div>
+</div>
+</div></section>
+
+<section id="jak"><div class="wrap">
+<h2>Kolik pamlsků denně</h2>
+<p class="lead">Pamlsky by neměly tvořit více než 10 % denního příjmu energie. Orientační dávky:</p>
+<div class="wide"><table>
+<thead><tr><th>Zvíře</th><th>Hmotnost</th><th>Doporučená denní dávka</th></tr></thead>
+<tbody>
+<tr><td>Malý pes</td><td>do 10 kg</td><td>5–10 g</td></tr>
+<tr><td>Střední pes</td><td>10–25 kg</td><td>10–25 g</td></tr>
+<tr><td>Velký pes</td><td>nad 25 kg</td><td>25–40 g</td></tr>
+<tr><td>Kočka</td><td>3–6 kg</td><td>3–6 g (asi 5–10 kousků)</td></tr>
+</tbody></table></div>
+<br>
+<div class="warn"><h3>Důležité upozornění</h3>
+<p style="margin:0">Pamlsky jsou doplňkové krmivo a nenahrazují plnohodnotnou stravu. Vždy zajistěte přístup k čerstvé vodě. Při alergiích, nemoci ledvin nebo pankreatitidě se před zavedením nového pamlsku poraďte s veterinářem. Nové pamlsky zavádějte postupně.</p></div>
+</div></section>
+
+<section id="objednavka"><div class="wrap">
+<h2>Košík a objednávka</h2>
+<p class="lead">Přidejte pamlsky tlačítkem „Do košíku“, zvolte dopravu a platbu a vyplňte údaje. Pečeme na objednávku, příprava trvá 2–3 dny. Minimální objednávka je 200 Kč.</p>
+
+<div class="box" id="done" hidden tabindex="-1">
+<h3>🎉 Děkujeme za objednávku!</h3>
+<p id="doneText"></p>
+<p id="demoNote" class="lead" hidden>Ukázkový režim: objednávka zatím nebyla nikam odeslána. Nastavte ORDER_ENDPOINT v souboru script.js.</p>
+<button class="btn" id="newOrder" type="button">Vytvořit novou objednávku</button>
+</div>
+
+<div class="checkout" id="checkout">
+<div class="box">
+<h3>🛒 Váš košík</h3>
+<div id="cartItems"></div>
+<fieldset><legend>Doprava</legend>
+<label class="opt"><input type="radio" name="ship" value="pickup" checked> Osobní odběr (termín domluvíme) <b>zdarma</b></label>
+<label class="opt"><input type="radio" name="ship" value="zas"> Zásilkovna <b>65 Kč</b> (nad 800 Kč zdarma)</label>
+</fieldset>
+<fieldset><legend>Platba</legend><div id="payOpts"></div></fieldset>
+<div id="totals"></div>
+</div>
+
+<form class="box" id="orderForm">
+<h3>📦 Vaše údaje</h3>
+<label>Jméno a příjmení<input name="name" required autocomplete="name"></label>
+<label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+<label>Telefon<input name="phone" type="tel" required autocomplete="tel"></label>
+<label id="addrWrap" hidden>Výdejní místo Zásilkovny nebo adresa<input name="address" autocomplete="street-address"></label>
+<label>Poznámka (nepovinné)<textarea name="note" rows="3"></textarea></label>
+<label class="chk"><input type="checkbox" name="agree" required> Souhlasím se zpracováním osobních údajů za účelem vyřízení objednávky.</label>
+<p id="msg" role="alert"></p>
+<button class="btn" type="submit">Odeslat objednávku</button>
+</form>
+</div>
+<p class="lead" style="margin-top:20px">Dotazy? ahoj@tlapkadrstka.cz · +420 777 000 000 (Po–Pá 9:00–17:00). Kontaktní údaje a ceny jsou ukázkové, upravte je podle sebe.</p>
+</div></section>
+
+<footer><div class="wrap">🐾 Tlapka & Dršťka · Vyrobeno s láskou · Skladujte na suchém a chladném místě</div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
